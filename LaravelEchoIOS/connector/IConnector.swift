@@ -7,7 +7,7 @@ import SocketIO
 
 
 /// Connector protocol
-protocol IConnector{
+public protocol IConnector{
 
     
     /// Create a fresh connection.

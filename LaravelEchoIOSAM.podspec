@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "LaravelEchoIOSAM"
-  s.version      = "0.0.4"
+  s.version      = "0.0.5"
 
   s.summary      = "A wrapper for Laravel Echo in Swift"
   s.description  = "A wrapper for Laravel Echo with Socket.io in Swift by bubbleflat.com"
@@ -29,7 +29,7 @@ Pod::Spec.new do |s|
   s.pod_target_xcconfig = { 'SWIFT_VERSION' => '5.0' }
 
   s.subspec 'Socket.IO-Client-Swift' do |socket|
-      socket.dependency   'Socket.IO-Client-Swift'
+      socket.dependency   'Socket.IO-Client-Swift', '~> 15.1.0'
   end
 
   #s.framework     = "LaravelEchoIOS"

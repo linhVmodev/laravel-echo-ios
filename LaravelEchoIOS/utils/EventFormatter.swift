@@ -9,17 +9,17 @@ import Foundation
 
 
 /// Event name formatter
-class EventFormatter {
+public class EventFormatter {
     
     
     /// Event namespace.
-    var namespace = ""
+    public var namespace = ""
     
     
     /// Create a new class instance.
     ///
     /// - Parameter namespace: namespce
-    init(namespace: String? = ""){
+    public init(namespace: String? = ""){
         self.setNamespace(value: namespace!)
     }
     
@@ -28,7 +28,7 @@ class EventFormatter {
     ///
     /// - Parameter event: event name
     /// - Returns: formated event name
-    func format(event: String) -> String {
+    public func format(event: String) -> String {
         var e : String = ""
         if(!(event.hasPrefix("\\") || event.hasPrefix("."))){
             e = self.namespace + "." + event
@@ -43,7 +43,7 @@ class EventFormatter {
     /// Set the event namespace.
     ///
     /// - Parameter value: namespace
-    func setNamespace(value: String? = "") {
+    public func setNamespace(value: String? = "") {
         if let wrap = value {
             self.namespace = wrap;
         }

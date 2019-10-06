@@ -10,27 +10,27 @@ import SocketIO
 
 
 /// This class represents a Socket.io channel.
-class SocketIoChannel: Channel {
+public class SocketIoChannel: Channel {
     
     
     /// The Socket.io client instance.
-    var socket: SocketIOClient
+    public var socket: SocketIOClient
     
     
     /// The name of the channel.
-    var name: String
+    public var name: String
 
     
     /// Channel auth options.
-    var auth: [String: Any]
+    public var auth: [String: Any]
     
     
     /// The event formatter.
-    var eventFormatter: EventFormatter
+    public var eventFormatter: EventFormatter
     
     
     /// The event callbacks applied to the channel.
-    var events : [String: [NormalCallback]]
+    public var events : [String: [NormalCallback]]
 
     
     /// Create a new class instance.
@@ -39,7 +39,7 @@ class SocketIoChannel: Channel {
     ///   - socket: the socket instance
     ///   - name: the channel name
     ///   - options: options for the channel
-    init(socket: SocketIOClient, name: String, options: [String: Any]){
+    public init(socket: SocketIOClient, name: String, options: [String: Any]){
         self.name = name
         self.socket = socket
         self.events = [:]
@@ -64,14 +64,14 @@ class SocketIoChannel: Channel {
 
     
     /// Subscribe to a Socket.io channel.
-    override func subscribe(){
+    public override func subscribe(){
         let data = [["channel": self.name, "auth": self.auth]]
         self.socket.emit("subscribe", with : data)
     }
 
     
     /// Unsubscribe from channel and ubind event callbacks.
-    override func unsubscribe(){
+    public override func unsubscribe(){
         self.unbind()
         let data = [["channel": self.name, "auth": self.auth]]
         self.socket.emit("unsubscribe", with: data)
@@ -84,7 +84,7 @@ class SocketIoChannel: Channel {
     ///   - event: event name
     ///   - callback: callback
     /// - Returns: the channel itself
-    override func listen(event: String, callback: @escaping NormalCallback) -> IChannel{
+    public override func listen(event: String, callback: @escaping NormalCallback) -> IChannel{
         self.on(event: self.eventFormatter.format(event: event), callback: callback)
         return self
     }
@@ -95,7 +95,7 @@ class SocketIoChannel: Channel {
     /// - Parameters:
     ///   - event: event name
     ///   - callback: callback
-    func on(event: String, callback: @escaping NormalCallback){
+    public func on(event: String, callback: @escaping NormalCallback){
 
         func listener(data: [Any], ack: SocketAckEmitter){
             if let channel = data[0] as? String {
@@ -111,7 +111,7 @@ class SocketIoChannel: Channel {
 
     
     /// Attach a 'reconnect' listener and bind the event.
-    func configureReconnector(){
+    public func configureReconnector(){
 
         func listener(event: [Any], _ack: SocketAckEmitter){
             self.subscribe()
@@ -127,7 +127,7 @@ class SocketIoChannel: Channel {
     /// - Parameters:
     ///   - event: event name
     ///   - callback: callback
-    func bind(event: String, callback: @escaping NormalCallback){
+    public func bind(event: String, callback: @escaping NormalCallback){
         if(self.events[event] == nil){
             self.events[event] = []
         }
@@ -136,7 +136,7 @@ class SocketIoChannel: Channel {
 
     
     /// Unbind the channel's socket from all stored event callbacks.
-    func unbind(){
+    public func unbind(){
         for (key, _) in self.events {
             self.events[key] = nil
         }
