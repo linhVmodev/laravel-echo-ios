@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
 
-  s.name         = "LaravelEchoIOS"
-  s.version      = "0.0.3"
+  s.name         = "LaravelEchoIOSAM"
+  s.version      = "0.0.4"
 
   s.summary      = "A wrapper for Laravel Echo in Swift"
   s.description  = "A wrapper for Laravel Echo with Socket.io in Swift by bubbleflat.com"
@@ -20,13 +20,13 @@ Pod::Spec.new do |s|
 
   s.author       = { "Valentin Vivies" => "valentin@bubbleflat.com", "bubbleflat" => "contact@bubbleflat.com" }
 
-  s.source       = { :git => "https://github.com/val-bubbleflat/laravel-echo-ios.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/amarunko/laravel-echo-ios.git", :tag => "#{s.version}" }
 
   s.platforms = {:ios => "9.0"}
   s.source_files  = "LaravelEchoIOS/*.swift", "LaravelEchoIOS/**/*.swift"
   s.exclude_files = ""
 
-  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.0' }
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '5.0' }
 
   s.subspec 'Socket.IO-Client-Swift' do |socket|
       socket.dependency   'Socket.IO-Client-Swift'

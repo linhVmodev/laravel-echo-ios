@@ -51,7 +51,8 @@ class SocketIOConnector: IConnector {
         if let url = self.options["host"] as? String {
             let nurl: URL! = URL(string: url)
             let socketConfig: SocketIOClientConfiguration = [.log(true), .compress]
-            self.socket = SocketIOClient(socketURL: nurl, config: socketConfig)
+            let manager = SocketManager(socketURL: nurl, config: socketConfig)
+            self.socket = manager.defaultSocket
             self.socket?.connect(timeoutAfter: 5, withHandler: {
                 print("ERROR")
             })
@@ -145,7 +146,7 @@ class SocketIOConnector: IConnector {
     /// - Returns: the socket id
     func socketId() -> String {
         if let socket: SocketIOClient = self.socket{
-            return socket.sid!
+            return socket.sid
         }
         return ""
     }
