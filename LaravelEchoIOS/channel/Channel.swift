@@ -31,7 +31,7 @@ public class Channel: IChannel {
     ///   - event: event name
     ///   - callback: callback
     /// - Returns: the channel itself
-    public func listen(event: String, callback: @escaping NormalCallback) -> IChannel {
+    @discardableResult public func listen(event: String, callback: @escaping NormalCallback) -> IChannel {
         return self
     }
 
