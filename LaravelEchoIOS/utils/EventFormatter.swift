@@ -29,7 +29,7 @@ public class EventFormatter {
     /// - Parameter event: event name
     /// - Returns: formated event name
     public func format(event: String) -> String {
-        var e : String = ""
+        var e : String = event
         if(!(event.hasPrefix("\\") || event.hasPrefix("."))){
             e = self.namespace + "." + event
         } else {
