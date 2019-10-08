@@ -9,6 +9,7 @@ import SocketIO
 /// This class creates a connnector to a Socket.io server.
 public class SocketIOConnector: IConnector {
 
+    private var manager: SocketManager?
     
     /// The Socket.io connection instance.
     public var socket: SocketIOClient?
@@ -50,9 +51,10 @@ public class SocketIOConnector: IConnector {
     public func connect(){
         if let url = self.options["host"] as? String {
             let nurl: URL! = URL(string: url)
+
             let socketConfig: SocketIOClientConfiguration = [.log(true)]
-            let manager = SocketManager(socketURL: nurl, config: socketConfig)
-            self.socket = manager.defaultSocket
+            self.manager = SocketManager(socketURL: nurl, config: socketConfig)
+            self.socket = manager?.defaultSocket
             self.socket?.connect(timeoutAfter: 5, withHandler: {
                 print("ERROR")
             })
@@ -170,5 +172,4 @@ public class SocketIOConnector: IConnector {
         }
         return def
     }
-
 }
