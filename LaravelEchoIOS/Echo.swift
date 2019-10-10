@@ -20,14 +20,14 @@ public class Echo {
     /// The Echo options.
     public var options: [String: Any]
     
-    
+    public var onDisconnect: (() -> Void)?
     /// Create a new class instance.
     ///
-    /// - Parameter options: options
-    public init(options: [String: Any]){
+    /// - Parameter options: optionsb
+    public init(options: [String: Any], onDisconnect: (() -> Void)? = .none){
         self.options = options
         //No Pusher support
-        self.connector = SocketIOConnector(options: self.options)
+        self.connector = SocketIOConnector(options: self.options, onDisconnect: onDisconnect)
     }
     
     
