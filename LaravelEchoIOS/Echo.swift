@@ -27,7 +27,7 @@ public class Echo {
     public init(options: [String: Any]){
         self.options = options
         //No Pusher support
-        self.connector = SocketIOConnector(options: self.options);
+        self.connector = SocketIOConnector(options: self.options)
     }
     
     
@@ -57,7 +57,7 @@ public class Echo {
     ///   - callback: callback
     /// - Returns: the channel listened
     public func listen(channel: String, event: String, callback: @escaping NormalCallback) -> IChannel{
-        return self.connector.listen(name: channel, event: event, callback: callback);
+        return self.connector.listen(name: channel, event: event, callback: callback)
     }
 
     
@@ -66,7 +66,7 @@ public class Echo {
     /// - Parameter channel: channel name
     /// - Returns: the channel
     public func channel(channel: String) -> IChannel {
-        return self.connector.channel(name: channel);
+        return self.connector.channel(name: channel)
     }
 
     
@@ -75,7 +75,7 @@ public class Echo {
     /// - Parameter channel: channel name
     /// - Returns: the private channel
     public func privateChannel(channel: String) -> IChannel{
-        return self.connector.privateChannel(name:channel);
+        return self.connector.privateChannel(name:channel)
     }
 
     
@@ -106,7 +106,7 @@ public class Echo {
     
     /// Disconnect from the Echo server.
     public func disconnect(){
-        self.connector.disconnect();
+        self.connector.disconnect()
     }
     
 }

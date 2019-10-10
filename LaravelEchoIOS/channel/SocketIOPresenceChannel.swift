@@ -26,7 +26,7 @@ public class SocketIOPresenceChannel: SocketIoChannel, IPresenceChannel {
     /// - Parameter callback: callback
     /// - Returns: the presence channel itself
     public func here(callback: NormalCallback) -> IPresenceChannel {
-        return self;
+        return self
     }
 
     
@@ -35,7 +35,7 @@ public class SocketIOPresenceChannel: SocketIoChannel, IPresenceChannel {
     /// - Parameter callback: callback
     /// - Returns: the presence channel itself
     public func joining(callback: NormalCallback) -> IPresenceChannel {
-        return self;
+        return self
     }
 
     /// Listen for someone leaving the channel. TODO
@@ -43,7 +43,7 @@ public class SocketIOPresenceChannel: SocketIoChannel, IPresenceChannel {
     /// - Parameter callback: callback
     /// - Returns: the presence channel itself
     public func leaving(callback: NormalCallback) -> IPresenceChannel {
-        return self;
+        return self
     }
 
 }

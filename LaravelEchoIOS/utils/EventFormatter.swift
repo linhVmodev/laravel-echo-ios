@@ -45,7 +45,7 @@ public class EventFormatter {
     /// - Parameter value: namespace
     public func setNamespace(value: String? = "") {
         if let wrap = value {
-            self.namespace = wrap;
+            self.namespace = wrap
         }
     }
     
