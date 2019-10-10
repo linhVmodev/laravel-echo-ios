@@ -5,7 +5,6 @@
 import Foundation
 import SocketIO
 
-
 /// This class creates a connnector to a Socket.io server.
 public class SocketIOConnector: IConnector {
 
@@ -26,15 +25,16 @@ public class SocketIOConnector: IConnector {
     /// All of the subscribed channels.
     public var channels: [String: IChannel]
 
+    public var onDisconnect: (() -> Void)?
     
     /// Create a new class instance.
     ///
     /// - Parameter options: options
-    public init(options: [String: Any]){
+    public init(options: [String: Any], onDisconnect: (() -> Void)? = .none){
         self.socket = nil
         self.options = options
         self.channels = [:]
-        //self.setOptions(options: options)
+        self.onDisconnect = onDisconnect
         self.connect()
     }
 
@@ -43,7 +43,7 @@ public class SocketIOConnector: IConnector {
     ///
     /// - Parameter options: options
     public func setOptions(options: [String: Any]){
-        self.options =  self.mergeOptions(options: options)
+        self.options = self.mergeOptions(options: options)
     }
 
     
@@ -55,8 +55,9 @@ public class SocketIOConnector: IConnector {
             let socketConfig: SocketIOClientConfiguration = [.log(true)]
             self.manager = SocketManager(socketURL: nurl, config: socketConfig)
             self.socket = manager?.defaultSocket
-            self.socket?.connect(timeoutAfter: 5, withHandler: {
-                print("ERROR")
+            self.socket?.connect(timeoutAfter: 5, withHandler: { [weak self] in
+                print("ERROR socket connection - try to check parameeters")
+                self?.onDisconnect?()
             })
         }
     }
