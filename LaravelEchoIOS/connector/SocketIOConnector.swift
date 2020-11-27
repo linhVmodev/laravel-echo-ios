@@ -81,7 +81,7 @@ public class SocketIOConnector: IConnector {
     ///   - callback: callback
     /// - Returns: the channel
     public func listen(name : String, event: String, callback: @escaping NormalCallback) -> IChannel{
-        return self.channel(name: name).listen(event: event, callback: callback)
+        return self.channel(name: name).listen(event: event, isFormat: false, callback: callback)
     }
 
     

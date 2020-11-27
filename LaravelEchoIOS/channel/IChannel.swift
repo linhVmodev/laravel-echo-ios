@@ -17,7 +17,7 @@ public protocol IChannel {
     ///   - event: event name
     ///   - callback: callback
     /// - Returns: the channel itself
-    func listen(event: String, callback: @escaping NormalCallback) -> IChannel
+    func listen(event: String, isFormat: Bool, callback: @escaping NormalCallback) -> IChannel
     
     /// Listen for an event on the channel instance.
     ///
