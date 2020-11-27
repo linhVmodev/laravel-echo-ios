@@ -85,7 +85,7 @@ public class SocketIoChannel: Channel {
     ///   - callback: callback
     /// - Returns: the channel itself
     public override func listen(event: String, callback: @escaping NormalCallback) -> IChannel{
-        self.on(event: self.eventFormatter.format(event: event), callback: callback)
+        self.on(event: event, callback: callback)
         return self
     }
 
