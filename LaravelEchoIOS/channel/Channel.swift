@@ -52,7 +52,7 @@ public class Channel: IChannel {
     ///   - callback: callback
     /// - Returns: the channel itself
     public func listenForWhisper(event: String, callback: @escaping NormalCallback) -> IChannel {
-        return self.listen(event: "client-" + event, callback: callback)
+        return self.listen(event: "client-" + event, isFormat: false, callback: callback)
     }
 
     
